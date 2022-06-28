@@ -109,6 +109,34 @@ function calculateWinner(squares) {
     return null;
 }
 
+history = [
+    // Перед первым ходом
+    {
+        squares: [
+            null, null, null,
+            null, null, null,
+            null, null, null,
+        ]
+    },
+    // После первого хода
+    {
+        squares: [
+            null, null, null,
+            null, 'X', null,
+            null, null, null,
+        ]
+    },
+    // После второго хода
+    {
+        squares: [
+            null, null, null,
+            null, 'X', null,
+            null, null, 'O',
+        ]
+    },
+    // ...
+]
+
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

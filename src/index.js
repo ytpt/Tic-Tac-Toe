@@ -13,18 +13,6 @@ const Square = (props) => {
 
 class Board extends React.Component {
 
-    handleClick(i) {
-        const squares = this.state.squares.slice();
-        if (calculateWinner(squares) || squares[i]) {
-            return;
-        }
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
-        this.setState({
-            squares: squares,
-            xIsNext: !this.state.xIsNext,
-        });
-    }
-
     renderSquare(i) {
         return (
             <Square
@@ -65,6 +53,22 @@ class Game extends React.Component {
             history: [{squares: Array(9).fill(null),}],
             xIsNext: true,
         }
+    }
+
+    handleClick(i) {
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        const squares = this.state.squares.slice();
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        }
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        this.setState({
+            history: history.concat([{
+                squares: squares,
+            }]),
+            xIsNext: !this.state.xIsNext,
+        });
     }
 
     render() {

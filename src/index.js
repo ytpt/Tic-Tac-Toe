@@ -74,6 +74,15 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            history: [{squares: Array(9).fill(null),}],
+            xIsNext: true,
+        }
+    }
+
     render() {
         return (
             <div className="game">
@@ -109,33 +118,6 @@ function calculateWinner(squares) {
     return null;
 }
 
-history = [
-    // Перед первым ходом
-    {
-        squares: [
-            null, null, null,
-            null, null, null,
-            null, null, null,
-        ]
-    },
-    // После первого хода
-    {
-        squares: [
-            null, null, null,
-            null, 'X', null,
-            null, null, null,
-        ]
-    },
-    // После второго хода
-    {
-        squares: [
-            null, null, null,
-            null, 'X', null,
-            null, null, 'O',
-        ]
-    },
-    // ...
-]
 
 // ========================================
 
